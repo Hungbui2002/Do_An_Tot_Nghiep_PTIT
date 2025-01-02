@@ -1,0 +1,189 @@
+<app-header></app-header>
+<p-toast />
+<div class="h-100">
+  <div
+    class="d-flex justify-content-center bg-bg-img bg-cover bg-center bg-no-repeat px-3 py-5"
+    style="height: 100vh"
+  >
+    <div class="box-register bg-white p-3 shadow-lg">
+      <div>
+        <div class="mb-2">
+          <h2 class="fw-medium fs-3 mb-1">Đăng ký</h2>
+        </div>
+        <form [formGroup]="registerForm">
+          <!-- Email -->
+          <div class="mb-2">
+            <label class="fw-medium mb-1" for="email">Email</label>
+            <input
+              class="input-field"
+              formControlName="email"
+              placeholder="Nhập email"
+              type="email"
+            />
+            <div
+              *ngIf="
+                registerForm.get('email')?.invalid &&
+                registerForm.get('email')?.touched
+              "
+              class="text-danger"
+            >
+              <small *ngIf="registerForm.get('email')?.errors?.['required']">
+                Email không được để trống.
+              </small>
+              <small *ngIf="registerForm.get('email')?.errors?.['email']">
+                Email không hợp lệ.
+              </small>
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="mb-2">
+            <label class="fw-medium mb-1" for="password">Mật khẩu</label>
+            <input
+              class="input-field"
+              formControlName="matKhau"
+              placeholder="Nhập mật khẩu"
+              type="password"
+            />
+            <div
+              *ngIf="
+                registerForm.get('matKhau')?.invalid &&
+                registerForm.get('matKhau')?.touched
+              "
+              class="text-danger"
+            >
+              <small *ngIf="registerForm.get('matKhau')?.errors?.['required']">
+                Mật khẩu không được để trống.
+              </small>
+              <small *ngIf="registerForm.get('matKhau')?.errors?.['minlength']">
+                Mật khẩu phải ít nhất 5 ký tự.
+              </small>
+            </div>
+          </div>
+
+          <!-- Confirm Password -->
+          <!-- Confirm Password -->
+          <div class="mb-2">
+            <label class="fw-medium mb-1" for="confirmPassword"
+              >Xác nhận mật khẩu</label
+            >
+            <input
+              class="input-field"
+              formControlName="confirmPassword"
+              placeholder="Nhập lại mật khẩu"
+              type="password"
+            />
+            <div
+              *ngIf="
+                registerForm.get('confirmPassword')?.invalid &&
+                registerForm.get('confirmPassword')?.touched
+              "
+              class="text-danger"
+            >
+              <small
+                *ngIf="registerForm.get('confirmPassword')?.errors?.['required']"
+              >
+                Xác nhận mật khẩu không được để trống.
+              </small>
+              <small
+                *ngIf="registerForm.get('confirmPassword')?.errors?.['passwordMismatch']"
+              >
+                Mật khẩu xác nhận không khớp.
+              </small>
+            </div>
+          </div>
+
+          <!-- HoTen -->
+          <div class="mb-2">
+            <label class="fw-medium mb-1" for="name">Họ tên</label>
+            <input
+              class="input-field"
+              formControlName="hoTen"
+              placeholder="Nhập họ tên"
+              type="text"
+            />
+            <div
+              *ngIf="
+                registerForm.get('hoTen')?.invalid &&
+                registerForm.get('hoTen')?.touched
+              "
+              class="text-danger"
+            >
+              <small *ngIf="registerForm.get('hoTen')?.errors?.['required']">
+                Họ tên không được để trống.
+              </small>
+            </div>
+          </div>
+
+          <!-- SoDienThoai -->
+          <div class="mb-2">
+            <label class="fw-medium mb-1" for="phone">Số điện thoại</label>
+            <input
+              class="input-field"
+              formControlName="soDienThoai"
+              placeholder="Nhập số điện thoại"
+              type="text"
+            />
+            <div
+              *ngIf="
+                registerForm.get('soDienThoai')?.invalid &&
+                registerForm.get('soDienThoai')?.touched
+              "
+              class="text-danger"
+            >
+              <small
+                *ngIf="registerForm.get('soDienThoai')?.errors?.['required']"
+              >
+                Số điện thoại không được để trống.
+              </small>
+            </div>
+          </div>
+
+          <!-- DiaChi -->
+          <div class="mb-2">
+            <label class="fw-medium mb-1" for="address">Địa chỉ</label>
+            <input
+              class="input-field"
+              formControlName="diaChi"
+              placeholder="Nhập địa chỉ"
+              type="text"
+            />
+            <div
+              *ngIf="
+                registerForm.get('diaChi')?.invalid &&
+                registerForm.get('diaChi')?.touched
+              "
+              class="text-danger"
+            >
+              <small *ngIf="registerForm.get('diaChi')?.errors?.['required']">
+                Địa chỉ không được để trống.
+              </small>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <button
+              class="btn btn-default w-100 py-2"
+              (click)="register()"
+              [disabled]="registerForm.invalid"
+              style="height: 48px"
+            >
+              Đăng ký
+            </button>
+          </div>
+        </form>
+        <div class="d-flex justify-content-center">
+          <span class=""
+            >Đã có tài khoản?
+            <a
+              class="fw-medium"
+              href="/auth/login"
+              style="color: rgb(26 119 255)"
+              >Đăng nhập ngay</a
+            ></span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,335 @@
+<app-menu-admin></app-menu-admin>
+<p-toast />
+
+<div class="slide mb-3" style="margin-top: 80px">
+  <div class="text-center">
+    <div class="fw-bold fs-3">Thêm món ăn</div>
+  </div>
+</div>
+
+<div class="mx-auto" style="max-width: 1000px">
+  <form [formGroup]="dishForm">
+    <div class="row">
+      <div class="col-4">
+        <div class="upload-box mb-3">
+          <input
+            type="file"
+            #formChoseFile
+            (change)="onFileSelected($event)"
+            accept="image/png, image/gif, image/jpeg"
+            id="box-left-file-input"
+            class="form-control file-input"
+            style="display: none"
+          />
+          <div class="mb-2">Chọn ảnh từ thư viện của bạn</div>
+          <button
+            class="btn btn-default py-2 px-3"
+            (click)="formChoseFile.click()"
+          >
+            Chọn ảnh
+          </button>
+        </div>
+        <div class="">
+          <img class="w-100 rounded" [src]="preview" alt="" />
+        </div>
+      </div>
+      <div class="col-8">
+        <div class="mb-2">
+          <div class="mb-1 fw-500">Tên món ăn</div>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="TenMon"
+            placeholder="Nhập tên món ăn"
+          />
+          <div
+            *ngIf="
+              dishForm.get('TenMon')?.invalid && dishForm.get('TenMon')?.touched
+            "
+            class="text-danger mt-1"
+          >
+            Tên món là bắt buộc.
+          </div>
+        </div>
+        <div class="mb-2">
+          <div class="mb-1 fw-500">Mô tả</div>
+          <textarea
+            class="form-control"
+            formControlName="MoTa"
+            placeholder="Nhập mô tả"
+            style="height: 100px"
+          ></textarea>
+        </div>
+        <div class="row">
+          <div class="col-6 mb-2">
+            <div>
+              <div class="mb-1 fw-500">Danh mục</div>
+              <select class="form-control" formControlName="MaLoaiMon">
+                <option value="" disabled selected>Chọn danh mục</option>
+                <option
+                  *ngFor="let category of categories"
+                  [value]="category.MaLoaiMon"
+                >
+                  {{ category.LoaiMon }}
+                </option>
+              </select>
+              <div
+                *ngIf="
+                  dishForm.get('MaLoaiMon')?.invalid &&
+                  dishForm.get('MaLoaiMon')?.touched
+                "
+                class="text-danger mt-1"
+              >
+                Danh mục là bắt buộc.
+              </div>
+            </div>
+          </div>
+          <div class="col-6 mb-2">
+            <div>
+              <div class="mb-1 fw-500">Độ phổ biến</div>
+              <select class="form-control" formControlName="DoPhoBien">
+                <option value="" disabled selected>Chọn độ phổ biến</option>
+                <option *ngFor="let item of popularity" [value]="item">
+                  {{ item }}
+                </option>
+              </select>
+              <div
+                *ngIf="
+                  dishForm.get('DoPhoBien')?.invalid &&
+                  dishForm.get('DoPhoBien')?.touched
+                "
+                class="text-danger mt-1"
+              >
+                Độ phổ biến là bắt buộc.
+              </div>
+            </div>
+          </div>
+          <div class="col-6 mb-2">
+            <div>
+              <div class="mb-1 fw-500">Thời gian nấu</div>
+              <input
+                type="number"
+                class="form-control"
+                formControlName="ThoiGianNau"
+                placeholder="Nhập thời gian nấu"
+              />
+              <div
+                *ngIf="
+                  dishForm.get('ThoiGianNau')?.invalid &&
+                  dishForm.get('ThoiGianNau')?.touched
+                "
+                class="text-danger mt-1"
+              >
+                Thời gian nấu là bắt buộc.
+              </div>
+            </div>
+          </div>
+          <div class="col-6 mb-2">
+            <div>
+              <div class="mb-1 fw-500">Độ khó</div>
+              <select class="form-control" formControlName="DoKho">
+                <option value="" disabled selected>Chọn độ khó</option>
+                <option *ngFor="let item of level" [value]="item">
+                  {{ item }}
+                </option>
+              </select>
+              <div
+                *ngIf="
+                  dishForm.get('DoKho')?.invalid &&
+                  dishForm.get('DoKho')?.touched
+                "
+                class="text-danger mt-1"
+              >
+                Độ khó là bắt buộc.
+              </div>
+            </div>
+          </div>
+          <div class="col-6 mb-2">
+            <div>
+              <div class="mb-1 fw-500">Giá</div>
+              <input
+                type="number"
+                class="form-control"
+                formControlName="Gia"
+                placeholder="Nhập giá"
+              />
+              <div
+                *ngIf="
+                  dishForm.get('Gia')?.invalid && dishForm.get('Gia')?.touched
+                "
+                class="text-danger mt-1"
+              >
+                Giá là bắt buộc.
+              </div>
+            </div>
+          </div>
+          <div class="col-6 mb-2">
+            <div>
+              <div class="mb-1 fw-500">Calo</div>
+              <input
+                type="number"
+                class="form-control"
+                formControlName="Calo"
+                placeholder="Nhập calo"
+              />
+              <div
+                *ngIf="
+                  dishForm.get('Calo')?.invalid && dishForm.get('Calo')?.touched
+                "
+                class="text-danger mt-1"
+              >
+                Calo là bắt buộc.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-3">
+        <!-- Thêm nguyên liệu -->
+        <div class="mb-2 fs-5 fw-500">Nguyên liệu</div>
+        <div formArrayName="NguyenLieu">
+          <div
+            *ngFor="let ingredient of nguyenLieu.controls; let i = index"
+            [formGroupName]="i"
+          >
+            <div class="mb-2">
+              <div class="mb-2">
+                <span>Nguyên liệu {{ i + 1 }}</span>
+                <button
+                  type="button"
+                  class="btn btn-danger ms-3"
+                  (click)="removeIngredient(i)"
+                >
+                  Xóa nguyên liệu
+                </button>
+              </div>
+              <select class="form-control mb-2" formControlName="MaNguyenLieu">
+                <option value="" disabled selected>Chọn nguyên liệu</option>
+                <option
+                  *ngFor="let item of ingredients"
+                  [value]="item.MaNguyenLieu"
+                >
+                  {{ item.TenNguyenLieu }}
+                </option>
+              </select>
+              <div
+                *ngIf="
+                  ingredient.get('MaNguyenLieu')?.invalid &&
+                  ingredient.get('MaNguyenLieu')?.touched
+                "
+                class="text-danger mt-1"
+              >
+                Nguyên liệu là bắt buộc.
+              </div>
+              <input
+                type="number"
+                class="form-control mb-2"
+                placeholder="Khối lượng"
+                formControlName="KhoiLuong"
+              />
+              <div
+                *ngIf="
+                  ingredient.get('KhoiLuong')?.invalid &&
+                  ingredient.get('KhoiLuong')?.touched
+                "
+                class="text-danger mt-1"
+              >
+                Khối lượng là bắt buộc.
+              </div>
+            </div>
+          </div>
+        </div>
+        <button
+          type="button"
+          class="btn btn-default p-3 mb-3"
+          (click)="addIngredient()"
+        >
+          Thêm nguyên liệu
+        </button>
+      </div>
+
+      <div class="mt-3">
+        <div class="mb-2 fs-5 fw-500">Các bước làm</div>
+        <div formArrayName="CacBuocLam">
+          <div
+            *ngFor="let step of cacBuocLam.controls; let i = index"
+            [formGroupName]="i"
+          >
+            <div class="mb-2">
+              <div class="mb-2">
+                <span>Bước {{ i + 1 }}</span>
+                <button
+                  type="button"
+                  class="btn btn-danger ms-3"
+                  (click)="removeStep(i)"
+                >
+                  Xóa bước
+                </button>
+              </div>
+              <input
+                type="text"
+                class="form-control mb-2"
+                placeholder="Tên bước"
+                formControlName="Buoc"
+              />
+              <textarea
+                class="form-control"
+                placeholder="Mô tả bước"
+                formControlName="MoTaBuoc"
+              ></textarea>
+
+              <!-- Chọn nhiều ảnh cho mỗi bước -->
+              <div class="upload-step-box mt-2">
+                <input
+                  type="file"
+                  (change)="onStepFileSelected($event, i)"
+                  accept="image/png, image/gif, image/jpeg"
+                  class="form-control"
+                  style="display: none"
+                  #stepFileInput
+                  multiple
+                />
+                <button
+                  type="button"
+                  class="btn"
+                  (click)="stepFileInput.click()"
+                >
+                  Chọn ảnh
+                </button>
+                <!-- Hiển thị các ảnh preview -->
+                <div class="mt-2 d-flex flex-wrap">
+                  <img
+                    *ngFor="let img of getAnhBuocArray(i).controls"
+                    [src]="img.value"
+                    alt="Preview ảnh bước"
+                    class="img-thumbnail me-2 mb-2"
+                    style="max-width: 100px"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          class="btn btn-default p-3 mb-3"
+          (click)="addStep()"
+        >
+          Thêm bước làm
+        </button>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-end">
+      <button
+        type="submit"
+        class="btn btn-default w-40 p-3 my-3"
+        (click)="submit()"
+      >
+        Lưu món ăn
+      </button>
+    </div>
+  </form>
+</div>

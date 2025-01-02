@@ -1,0 +1,46 @@
+.vertical-line {
+  width: 10px;
+  height: 36px;
+  background-color: #ffa21a;
+  margin: 0 10px 0 0;
+  border-radius: 5px;
+}
+
+.menu-cooking {
+  display: block;
+  position: relative;
+}
+.menu-cooking ul {
+  display: flex;
+  flex-flow: row wrap;
+  overflow: hidden;
+  height: auto;
+}
+.menu-cooking ul li {
+  float: left;
+  width: 11%;
+  margin: 0 1.5% 1.5% 0%;
+}
+.menu-cooking ul li a {
+  display: block;
+  overflow: hidden;
+  color: #333;
+  text-align: center;
+  font-size: 15px;
+}
+.menu-cooking ul a img {
+  display: block;
+  overflow: hidden;
+  margin: 5px auto;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  width: 100px;
+  height: 100px;
+}
+
+.list ul a img {
+  border-radius: 50%;
+  border: 3px solid #fff;
+  width: 80px;
+  height: 80px;
+}

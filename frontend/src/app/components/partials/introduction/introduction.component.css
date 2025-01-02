@@ -1,0 +1,44 @@
+.title {
+  padding-bottom: 1rem;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 2rem;
+  color: rgb(44 42 41);
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+.title:after {
+  border-radius: 0.625rem;
+  margin-top: 10px;
+  display: block;
+  height: 0.5rem;
+  width: 5rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 162 26 / var(--tw-bg-opacity));
+  --tw-content: "";
+  content: var(--tw-content);
+}
+
+.features ul {
+  list-style: none;
+  padding: 0;
+}
+
+.features ul li {
+  line-height: 1.6;
+  margin-bottom: 15px;
+  padding-left: 30px;
+  position: relative;
+}
+
+.features ul li::before {
+  content: "✔";
+  color: #4caf50;
+  font-size: 18px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+strong {
+  color: #ff5722;
+}

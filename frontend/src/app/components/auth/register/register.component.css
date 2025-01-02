@@ -1,0 +1,52 @@
+.bg-no-repeat {
+  background-repeat: no-repeat;
+}
+.bg-center {
+  background-position: 50%;
+}
+.bg-cover {
+  background-size: cover;
+}
+.bg-bg-img {
+  background-color: #ffc900;
+}
+
+.fw-medium {
+  font-weight: 500;
+}
+.input-field {
+  border-radius: 0.625rem;
+  border-width: 0;
+  display: block;
+  width: 100%;
+  background-color: rgb(243 243 243);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  padding: 0.625rem 0.875rem;
+  color: rgb(44 42 41);
+  --tw-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+.hidden-password {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  right: 10px;
+}
+.hidden-password button {
+  border: none;
+  height: 40px;
+}
+.box-register {
+  width: 450px;
+  border-radius: 20px;
+  height: fit-content;
+  margin-top: 40px;
+}

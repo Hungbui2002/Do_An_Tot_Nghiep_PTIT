@@ -1,0 +1,12 @@
+.page-link {
+  display: block;
+  color: black;
+  text-decoration: none;
+  background-color: #fff;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+.page-link:hover {
+  background-color: #ffa21a;
+  color: black;
+}

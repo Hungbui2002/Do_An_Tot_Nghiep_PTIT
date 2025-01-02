@@ -1,0 +1,29 @@
+<div *ngIf="typeDisplay == 'grid'">
+  <div class="d-flex">
+    <div class="vertical-line"></div>
+    <div class="fw-bold fs-4 mb-3">Vào bếp</div>
+  </div>
+  <div class="menu-cooking">
+    <ul>
+      <li class="zoom-in" *ngFor="let category of categories">
+        <a (click)="changeCategory(category.MaLoaiMon)">
+          <img [src]="category.Anh" />
+          <span class="fw-bold">{{ category.LoaiMon }}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div *ngIf="typeDisplay == 'list'">
+  <div class="list box p-3">
+    <ul>
+      <li class="zoom-in mb-3" *ngFor="let category of categories">
+        <a (click)="changeCategory(category.MaLoaiMon)">
+          <img [src]="category.Anh" />
+          <span class="fw-bold ms-3">{{ category.LoaiMon }}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

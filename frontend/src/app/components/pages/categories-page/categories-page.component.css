@@ -1,0 +1,28 @@
+.poster {
+  height: 200px;
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/angular-firebase-d9b19.appspot.com/o/yt%2Fasian-dishes-1440x450.jpg?alt=media&token=361b523a-e13e-4ed2-a045-af0a6184f91d");
+  color: white;
+}
+
+.content-card {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 10px;
+}
+.card-img-list {
+  width: 305px;
+  height: 210px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.card-img-element {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.card-item {
+  font-weight: 600;
+  font-size: 22px;
+  color: #ffa21a;
+  margin-right: 5px;
+}

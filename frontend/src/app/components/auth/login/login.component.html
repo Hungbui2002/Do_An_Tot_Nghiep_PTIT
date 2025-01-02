@@ -1,0 +1,164 @@
+<app-header></app-header>
+<p-toast />
+<div class="h-100">
+  <div
+    class="d-flex justify-content-center bg-bg-img bg-cover bg-center bg-no-repeat px-3 py-5"
+    style="height: 100vh"
+  >
+    <div
+      class="bg-white px-4 py-4 shadow-lg"
+      style="border-radius: 20px; height: fit-content; margin-top: 110px"
+    >
+      <div>
+        <div class="mb-4">
+          <h2 class="fw-medium fs-3 mb-1">Đăng nhập</h2>
+          <p style="font-weight: 400">
+            Đăng nhập bằng tài khoản mà bạn đã đăng ký với chúng tôi
+          </p>
+        </div>
+        <form [formGroup]="loginForm">
+          <div>
+            <div class="mb-2">
+              <div class="mb-2">
+                <label class="fw-medium mb-1" for="phone">Email</label>
+                <input
+                  class="input-field"
+                  formControlName="email"
+                  placeholder="Nhập email"
+                  type="mail"
+                  value=""
+                  name="phone"
+                />
+                <div
+                  *ngIf="
+                    loginForm.get('email')?.invalid &&
+                    loginForm.get('email')?.touched
+                  "
+                  class="text-danger"
+                >
+                  <small *ngIf="loginForm.get('email')?.errors?.['required']"
+                    >Email không được để trống.</small
+                  >
+                  <small *ngIf="loginForm.get('email')?.errors?.['email']"
+                    >Email không hợp lệ.</small
+                  >
+                </div>
+              </div>
+              <div>
+                <label class="fw-medium mb-1" for="password">Mật khẩu</label>
+                <div class="position-relative">
+                  <input
+                    formControlName="password"
+                    placeholder="Nhập mật khẩu"
+                    class="input-field"
+                    [type]="isHiddenPassword ? 'password' : 'text'"
+                    autocomplete="new-password"
+                    value=""
+                    name="password"
+                  />
+                  <div class="hidden-password">
+                    <button type="button" (click)="toggleHiddenPassword()">
+                      <svg
+                        *ngIf="isHiddenPassword"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <path
+                          d="M15.58 12c0 1.98-1.6 3.58-3.58 3.58S8.42 13.98 8.42 12s1.6-3.58 3.58-3.58 3.58 1.6 3.58 3.58Z"
+                          stroke="#4c4a48"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        ></path>
+                        <path
+                          d="M12 20.27c3.53 0 6.82-2.08 9.11-5.68.9-1.41.9-3.78 0-5.19-2.29-3.6-5.58-5.68-9.11-5.68-3.53 0-6.82 2.08-9.11 5.68-.9 1.41-.9 3.78 0 5.19 2.29 3.6 5.58 5.68 9.11 5.68Z"
+                          stroke="#4c4a48"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        ></path>
+                      </svg>
+                      <svg
+                        *ngIf="!isHiddenPassword"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <path
+                          d="m14.53 9.47-5.06 5.06a3.576 3.576 0 1 1 5.06-5.06Z"
+                          stroke="#4c4a48"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        ></path>
+                        <path
+                          d="M17.82 5.77C16.07 4.45 14.07 3.73 12 3.73c-3.53 0-6.82 2.08-9.11 5.68-.9 1.41-.9 3.78 0 5.19.79 1.24 1.71 2.31 2.71 3.17M8.42 19.53c1.14.48 2.35.74 3.58.74 3.53 0 6.82-2.08 9.11-5.68.9-1.41.9-3.78 0-5.19-.33-.52-.69-1.01-1.06-1.47"
+                          stroke="#4c4a48"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        ></path>
+                        <path
+                          d="M15.51 12.7a3.565 3.565 0 0 1-2.82 2.82M9.47 14.53 2 22M22 2l-7.47 7.47"
+                          stroke="#4c4a48"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        ></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <!-- hiển thị lỗi password -->
+                <div
+                  *ngIf="
+                    loginForm.get('password')?.invalid &&
+                    loginForm.get('password')?.touched
+                  "
+                  class="text-danger"
+                >
+                  <small *ngIf="loginForm.get('password')?.errors?.['required']"
+                    >Mật khẩu không được để trống.</small
+                  >
+                  <small
+                    *ngIf="loginForm.get('password')?.errors?.['minlength']"
+                    >Mật khẩu phải ít nhất 5 ký tự.</small
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-end mb-3">
+              <a class="fw-medium">Quên mật khẩu?</a>
+            </div>
+          </div>
+          <div class="mb-4">
+            <button
+              class="btn btn-default w-100 py-2"
+              (click)="login()"
+              [disabled]="loginForm.invalid"
+              style="height: 48px"
+            >
+              Đăng nhập
+            </button>
+          </div>
+        </form>
+        <div class="d-flex justify-content-center">
+          <span class=""
+            >Bạn chưa có tài khoản?
+            <a
+              routerLink="/auth/register"
+              class="fw-medium"
+              style="color: rgb(26 119 255)"
+              >Đăng ký ngay</a
+            ></span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

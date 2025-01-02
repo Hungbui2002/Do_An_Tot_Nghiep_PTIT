@@ -1,0 +1,48 @@
+<h2 mat-dialog-title>{{ data ? "Sửa nguyên liệu" : "Thêm nguyên liệu" }}</h2>
+<form [formGroup]="ingredientForm">
+  <mat-form-field class="w-100" appearance="fill">
+    <mat-label>Tên nguyên liệu</mat-label>
+    <input matInput formControlName="TenNguyenLieu" />
+    <mat-error
+      *ngIf="ingredientForm.get('TenNguyenLieu')?.hasError('required')"
+    >
+      Tên nguyên liệu là bắt buộc
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="w-100" appearance="fill">
+    <mat-label>Giá đơn vị</mat-label>
+    <input matInput formControlName="GiaDonVi" type="number" />
+  </mat-form-field>
+
+  <mat-form-field class="w-100" appearance="fill">
+    <mat-label>Đơn vị</mat-label>
+    <input matInput formControlName="DonVi" />
+    <mat-error *ngIf="ingredientForm.get('DonVi')?.hasError('required')">
+      Đơn vị là bắt buộc
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="w-100" appearance="fill">
+    <mat-label>Mô tả</mat-label>
+    <textarea matInput formControlName="MoTa"></textarea>
+  </mat-form-field>
+
+  <mat-form-field class="w-100" appearance="fill">
+    <mat-label>Điều kiện bảo quản</mat-label>
+    <textarea matInput formControlName="DieuKienBaoQuan"></textarea>
+  </mat-form-field>
+
+  <div class="d-flex justify-content-end my-4 me-3">
+    <button class="btn btn-light px-3 py-2 me-2" (click)="onCancel()">
+      Hủy
+    </button>
+    <button
+      class="btn btn-default px-3 py-2"
+      [disabled]="!ingredientForm.valid"
+      (click)="onSave()"
+    >
+      Lưu
+    </button>
+  </div>
+</form>
